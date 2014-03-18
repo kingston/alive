@@ -1,5 +1,5 @@
 #mixin
-DrawingUtil = {
+DrawingUtil =
   drawRadial: (x, y, radius, centerColor, extremeColor) ->
     for r in [radius...0]
       inter = @map(r, 0, radius, 0, 1)
@@ -14,4 +14,15 @@ DrawingUtil = {
       @strokeWeight(1)
       @noFill()
       @ellipse(x, y, r, r)
-}
+
+  aliveShapes: {}
+
+  preloadAliveShapes: ->
+    names = ['bird', 'grass']
+
+    for name in names
+      @aliveShapes[name] = @loadShape('svg/' + name + ".svg")
+
+  getShape: (shapeName) ->
+    return @aliveShapes[shapeName]
+

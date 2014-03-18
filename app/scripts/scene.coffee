@@ -2,15 +2,23 @@ class Scene
   initialize: () ->
     canvas = document.getElementById('scene')
     @processing = new Processing(canvas, @sketch.bind(@))
-    # extend processing
-    $.extend(@processing, DrawingUtil)
 
     @animalsLayer = []
+    @plantsLayer = []
     @controllers = []
 
   addAnimal: (type, location, config) ->
     p = @processing
-    @animalsLayer.push(new type(p, location, config))
+    @animalsLayer.push(new type(p, location, @, config))
+
+  addPlant: (type, location, config) ->
+    p = @processing
+    @plantsLayer.push(new type(p, location, @, config))
+
+    # sort plants layer by y
+    @plantsLayer.sort((a,b) ->
+      a.location.y - b.location.y
+    )
 
   registerController: (controller) ->
     @controllers.push(controller)
@@ -27,6 +35,8 @@ class Scene
     # add elements to screen
     @background = new Background(p)
 
+    p.preloadAliveShapes()
+
     @lastUpdate = p.millis()
 
   draw: (p) ->
@@ -39,16 +49,23 @@ class Scene
       controller.update(p, p.millis(), dt)
     for animal in @animalsLayer
       animal.update(p, p.millis(), dt)
+    for plant in @plantsLayer
+      plant.update(p, p.millis(), dt)
 
     # draw objects
     for controller in @controllers
       controller.draw(p)
     for animal in @animalsLayer
       animal.draw(p)
+    for plant in @plantsLayer
+      plant.draw(p)
 
     @lastUpdate = p.millis()
 
   sketch: (p) ->
+    # extend processing
+    $.extend(p, DrawingUtil)
+
     p.setup = @setup.bind(@, p)
     p.draw = @draw.bind(@, p)
 

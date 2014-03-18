@@ -21,10 +21,10 @@ class Controller
     if @moveRight
       @x += dt * @moveSpeed / 1000.0
 
-    if @x < @radius
-      @x = @radius
-    else if @x > p.width - @radius
-      @x = p.width - @radius
+    if @x < 0
+      @x = p.width
+    else if @x > p.width
+      @x = 0
 
 
   draw: (p) ->

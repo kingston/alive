@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="bird" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="300px" height="200px" viewBox="0 0 300 200" enable-background="new 0 0 300 200" xml:space="preserve">
+<path id="backWing" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M156.086,115.934
+	c82.318,0,140.597,69.049,140.597,69.049S251.256,72.611,169.634,69.976"/>
+<path id="body" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M160.237,53.026
+	C126.801,43.647,74.815,92.58,56.202,84.603c-18.613-7.978-44.539-23.268-44.539-23.268s2.991,14.958,0,20.941
+	C8.671,88.259,0.029,92.912,0.029,92.912s10.636,5.317,9.972,13.96c-0.665,8.644-5.983,23.267-5.983,23.267
+	s36.895-6.312,45.87-5.316c8.974,0.996,62.82,24.266,93.067,27.92c30.247,3.656,65.812-24.93,89.079-25.594
+	c23.266-0.664,28.252-5.65,32.241-10.969c3.988-5.32,6.649-22.27,6.649-22.27s12.628-39.222-21.607-54.844
+	S214.75,68.316,160.237,53.026z"/>
+<g id="fixed">
+	<path id="beak" stroke="#000000" stroke-miterlimit="10" d="M265.49,114.129c0,0,32.022,2.938,34.348,0
+		c2.328-2.936-26.64-31.521-26.64-31.521L265.49,114.129z"/>
+	<ellipse id="eye" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="237.187" cy="60.671" rx="10.803" ry="10.969"/>
+	<ellipse id="pupil" stroke="#000000" stroke-miterlimit="10" cx="241.072" cy="63.642" rx="4.238" ry="4.985"/>
+</g>
+<path id="frontWing" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M194.78,121.164
+	c-112.527,0-142.879,78.777-142.879,78.777S64.686,71.641,176.268,68.628"/>
+</svg>

@@ -26,9 +26,8 @@ class KeyboardController extends Controller
     $(window).keypress((e) =>
       switch e.which
         when 'b'.charCodeAt(0)
-          @createBird()
+          @scene.addAnimal(Bird, Util.pt(@x, @y), {})
           e.preventDefault()
+        when 'g'.charCodeAt(0)
+          @scene.addPlant(Grass, Util.pt(@x, @y), {})
     )
-
-  createBird: ->
-    @scene.addAnimal(Bird, Util.pt(@x, @y), {})
