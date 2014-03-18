@@ -324,11 +324,17 @@
       p.size($(window).width(), $(window).height());
       this.background = new Background(p);
       p.preloadAliveShapes();
-      return this.lastUpdate = p.millis();
+      this.lastUpdate = p.millis();
+      this.windMusic = new Howl({
+        urls: ['https://dl.dropboxusercontent.com/u/4863004/temp/wind.mp3'],
+        loop: true
+      });
+      this.windMusic.play();
+      return this.windMusic.fade(0.0, 0.3, 1000);
     };
 
     Scene.prototype.draw = function(p) {
-      var animal, controller, dt, plant, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _m, _n, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+      var animal, chirpMusic, controller, dt, i, plant, vol, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _m, _n, _o, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
       this.background.draw(p);
       dt = p.millis() - this.lastUpdate;
       _ref2 = this.controllers;
@@ -346,19 +352,29 @@
         plant = _ref4[_k];
         plant.update(p, p.millis(), dt);
       }
-      _ref5 = this.controllers;
-      for (_l = 0, _len3 = _ref5.length; _l < _len3; _l++) {
-        controller = _ref5[_l];
+      for (i = _l = 0, _ref5 = this.animalsLayer.length; 0 <= _ref5 ? _l < _ref5 : _l > _ref5; i = 0 <= _ref5 ? ++_l : --_l) {
+        if (dt * Math.min(6, i) > Util.rand(1, 60000.0)) {
+          chirpMusic = new Howl({
+            urls: ['https://dl.dropboxusercontent.com/u/4863004/temp/chirp.mp3']
+          });
+          chirpMusic.play();
+          vol = Util.rand(0.05, 0.4);
+          chirpMusic.fade(0.0, vol, 1000);
+        }
+      }
+      _ref6 = this.controllers;
+      for (_m = 0, _len3 = _ref6.length; _m < _len3; _m++) {
+        controller = _ref6[_m];
         controller.draw(p);
       }
-      _ref6 = this.animalsLayer;
-      for (_m = 0, _len4 = _ref6.length; _m < _len4; _m++) {
-        animal = _ref6[_m];
+      _ref7 = this.animalsLayer;
+      for (_n = 0, _len4 = _ref7.length; _n < _len4; _n++) {
+        animal = _ref7[_n];
         animal.draw(p);
       }
-      _ref7 = this.plantsLayer;
-      for (_n = 0, _len5 = _ref7.length; _n < _len5; _n++) {
-        plant = _ref7[_n];
+      _ref8 = this.plantsLayer;
+      for (_o = 0, _len5 = _ref8.length; _o < _len5; _o++) {
+        plant = _ref8[_o];
         plant.draw(p);
       }
       return this.lastUpdate = p.millis();

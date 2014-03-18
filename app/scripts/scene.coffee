@@ -39,6 +39,16 @@ class Scene
 
     @lastUpdate = p.millis()
 
+    # start wind sound
+    # http://soundbible.com/1810-Wind.html
+    @windMusic = new Howl({
+      urls: ['https://dl.dropboxusercontent.com/u/4863004/temp/wind.mp3']
+      loop: true
+    })
+    @windMusic.play()
+    @windMusic.fade(0.0, 0.3, 1000)
+
+
   draw: (p) ->
     # background
     @background.draw(p)
@@ -51,6 +61,17 @@ class Scene
       animal.update(p, p.millis(), dt)
     for plant in @plantsLayer
       plant.update(p, p.millis(), dt)
+
+    # randomly play chirps
+    # http://soundbible.com/1235-Common-Tern-Warning-Call.html
+    for i in [0...@animalsLayer.length]
+      if dt * Math.min(6, i) > Util.rand(1, 60000.0)
+        chirpMusic = new Howl({
+          urls: ['https://dl.dropboxusercontent.com/u/4863004/temp/chirp.mp3']
+        })
+        chirpMusic.play()
+        vol = Util.rand(0.05, 0.4)
+        chirpMusic.fade(0.0, vol, 1000)
 
     # draw objects
     for controller in @controllers
