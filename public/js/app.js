@@ -10,7 +10,7 @@
     AliveApplication.prototype.run = function() {
       this.scene = new Scene();
       this.scene.initialize();
-      this.controller = new KeyboardController();
+      this.controller = new LeapController();
       this.controller.initialize(this.scene);
       return window.setTimeout(function() {
         return $("#overlay").fadeOut(500);
@@ -286,7 +286,7 @@
 
     return LeapController;
 
-  })(Controller);
+  })(KeyboardController);
 
   Scene = (function() {
     function Scene() {}
@@ -583,7 +583,13 @@
     __extends(Plant, _super);
 
     function Plant(p, spawnLocation, scene) {
-      spawnLocation.x += Util.rand(-50, 50);
+      var sign;
+      if (Math.random() > 0.5) {
+        sign = 1;
+      } else {
+        sign = -1;
+      }
+      spawnLocation.x += Math.exp(-Util.rand(0, 4)) * 200 * sign;
       spawnLocation.y = p.height - Util.rand(10, scene.background.groundHeight);
       Plant.__super__.constructor.call(this, p, spawnLocation, scene);
     }

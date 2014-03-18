@@ -1,6 +1,6 @@
-#_require controller.coffee
+#_require keyboardController.coffee
 
-class LeapController extends Controller
+class LeapController extends KeyboardController
   movementThreshold: 0.05
 
   initialize: (scene) ->
