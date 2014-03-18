@@ -2,10 +2,27 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <canvas id="scene"></canvas>
+
+    <div id="overlay">
+      <h1>Alive</h1>
+      <h2 id="author">by kingston tam</h2>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//js.leapmotion.com/leap-0.4.2.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/processing-1.4.1.min.js"></script>
+    <script>
+      var app = new AliveApplication();
+      app.run();
+    </script>
   </body>
 </html>
