@@ -5,6 +5,7 @@ class window.AliveApplication
     @scene.initialize()
 
     # create keyboard controller
+    #@controller = new LeapController()
     @controller = new KeyboardController()
     @controller.initialize(@scene)
 

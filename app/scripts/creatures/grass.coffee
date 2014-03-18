@@ -14,7 +14,7 @@ class Grass extends Plant
     @grassShape.disableStyle()
 
     @tipX = Util.randInt(-10, 30)
-    @tipY = Util.randInt(-100, 50)
+    @tipY = Util.randInt(-70, 50)
 
     @scale = 0
 
@@ -30,7 +30,7 @@ class Grass extends Plant
 
   draw: (p) ->
     p.pushMatrix()
-    p.translate(@location.x-@width/2, @location.yk
+    p.translate(@location.x-@width/2, @location.y)
     p.scale(1, @scale)
     p.stroke(p.color(0,0,0))
     p.fill(@color)
